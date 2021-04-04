@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{2E1FA6D3-5BCB-48C6-BD32-1E3CE885046B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SavingMemoLines\SavingMemoLines.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SavingMemoLines">
+        <MSBuild Projects="SavingMemoLines\SavingMemoLines.dproj"/>
+    </Target>
+    <Target Name="SavingMemoLines:Clean">
+        <MSBuild Projects="SavingMemoLines\SavingMemoLines.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SavingMemoLines:Make">
+        <MSBuild Projects="SavingMemoLines\SavingMemoLines.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SavingMemoLines"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SavingMemoLines:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SavingMemoLines:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
